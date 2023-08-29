@@ -30,8 +30,12 @@ function sendEmail() {
     }
   );
 }
-const recurrence = environments.brevoRecurrence;
-const job = schedule.scheduleJob(recurrence, function() {
+
+const rule = new schedule.RecurrenceRule();
+rule.hour = environments.brevoRecurrenceHour;
+rule.minute = environments.brevoRecurrenceMinute;
+rule.tz = 'Etc/GMT+5';
+const job = schedule.scheduleJob(rule, function() {
   sendEmail();
 });
 

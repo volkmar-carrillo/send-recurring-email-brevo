@@ -18,7 +18,7 @@ sendSmtpEmail.to = [
 sendSmtpEmail.bcc = [
   { email: process.env.BREVO_EMAIL_BCC, name: process.env.BREVO_NAME_BCC },
 ];
-sendSmtpEmail.templateId = 1;
+sendSmtpEmail.templateId = process.env.BREVO_TEMPLATE_ID;
 
 function sendEmail() {
   apiInstance.sendTransacEmail(sendSmtpEmail).then(
@@ -32,8 +32,8 @@ function sendEmail() {
     }
   );
 }
-
-const job = schedule.scheduleJob('0 8 * * *', function() {
+const recurrence = process.env.BREVO_RECURRENCE;
+const job = schedule.scheduleJob(recurrence, function() {
   sendEmail();
 });
 

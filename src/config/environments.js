@@ -9,7 +9,8 @@ const environments = {
   brevoNameTo: process.env.BREVO_NAME_TO,
   brevoNameBcc: process.env.BREVO_NAME_BCC,
   brevoTemplateId: parseInt(process.env.BREVO_TEMPLATE_ID),
-  brevoRecurrence: process.env.BREVO_RECURRENCE,
+  brevoRecurrenceHour: parseInt(process.env.BREVO_RECURRENCE_HOUR),
+  brevoRecurrenceMinute: parseInt(process.env.BREVO_RECURRENCE_MINUTE),
 };
 
 module.exports = { environments };
